@@ -12,7 +12,7 @@ const Todo = ({ todo, todos, setTodos }) => {
   return (
     <tr>
       <td>{todo.description}</td>
-      <td>{todo.completed ? "no" : "si"}</td>
+      <td>{todo.completed ? "si" : "no"}</td>
       <td>
         <button onClick={toggleCompleted}>mark</button>
       </td>

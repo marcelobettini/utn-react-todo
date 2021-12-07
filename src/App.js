@@ -25,12 +25,14 @@ function App() {
     });
     todoRef.current.value = null;
   };
-
+  const deleteCompleted = () => {
+    setTodos(todos.filter((el) => el.completed === false));
+  };
   return (
     <div>
       <input ref={todoRef} type="text" placeholder="nueva tarea..." />
       <button onClick={handlerAddTodo}>Agregar tarea</button>
-      <button>Eliminar finalizadas</button>
+      <button onClick={deleteCompleted}>Eliminar finalizadas</button>
 
       <TodoList todos={todos} setTodos={setTodos} />
     </div>

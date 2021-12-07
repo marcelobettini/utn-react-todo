@@ -7,7 +7,7 @@ export const TodoList = ({ todos, setTodos }) => {
         <thead>
           <tr>
             <th>tarea</th>
-            <th>pendiente</th>
+            <th>finalizada</th>
           </tr>
         </thead>
         <tbody>

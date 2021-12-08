@@ -1,6 +1,13 @@
 import Todo from "./Todo";
 
-export const TodoList = ({ todos, setTodos }) => {
+export const TodoList = ({
+  todos,
+  setTodos,
+  todoRef,
+  btnRef,
+  setEditMode,
+  setId,
+}) => {
   return (
     <div>
       <table>
@@ -18,6 +25,10 @@ export const TodoList = ({ todos, setTodos }) => {
                 todo={todo}
                 todos={todos}
                 setTodos={setTodos}
+                todoRef={todoRef}
+                btnRef={btnRef}
+                setEditMode={setEditMode}
+                setId={setId}
               />
             );
           })}

@@ -18,9 +18,9 @@ const Todo = ({
     );
   };
 
-  const setForEdit = (id) => {
-    setId(id);
-    setEditMode(true);
+  const markForEdit = (id) => {
+    setId((prevState) => (prevState = id));
+    setEditMode((prevState) => (prevState = true)); //setEditMode(true)
     btnRef.current.innerText = "Editar tarea";
     todoRef.current.value = todo.description;
   };
@@ -30,7 +30,7 @@ const Todo = ({
       <td>{todo.completed ? "si" : "no"}</td>
       <td>
         <button onClick={toggleCompleted}>mark</button>
-        <button onClick={() => setForEdit(todo.id)}>edit</button>
+        <button onClick={() => markForEdit(todo.id)}>edit</button>
       </td>
     </tr>
   );

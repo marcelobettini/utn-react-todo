@@ -51,7 +51,7 @@ function App() {
     <Container>
       <Form className="my-5">
         <Row className="align-items-center text-capitalize">
-          <Form.Group className="col-8">
+          <Form.Group className="col-12 col-lg-8 ">
             <FloatingLabel controlId="floatingInput" label="nueva tarea">
               <Form.Control
                 ref={todoRef}
@@ -61,7 +61,7 @@ function App() {
               />
             </FloatingLabel>
           </Form.Group>
-          <Form.Group className="col-4 text-center">
+          <Form.Group className="col-12 col-lg-4 my-2 text-center">
             <Button
               variant="success"
               size="sm"

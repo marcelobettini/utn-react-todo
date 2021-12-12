@@ -1,6 +1,13 @@
 import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import { TodoList } from "./TodoList";
 function App() {
   const [todos, setTodos] = useState([
@@ -32,7 +39,7 @@ function App() {
       const arrEdit = todos.map((item) =>
         item.id === id ? { ...item, description: todoRef.current.value } : item
       );
-      setTodos(arrEdit);
+      setTodos((prevState) => (prevState = arrEdit));
     }
 
     todoRef.current.value = null;
@@ -41,22 +48,45 @@ function App() {
     setTodos(todos.filter((el) => !el.completed));
   };
   return (
-    <div>
-      <input ref={todoRef} type="text" placeholder="nueva tarea..." />
-      <button ref={btnRef} onClick={handlerAddTodo}>
-        Agregar tarea
-      </button>
-      <button onClick={deleteCompleted}>Eliminar finalizadas</button>
+    <Container>
+      <Form className="my-5">
+        <Row className="align-items-center text-capitalize">
+          <Form.Group className="col-8">
+            <FloatingLabel controlId="floatingInput" label="nueva tarea">
+              <Form.Control
+                ref={todoRef}
+                type="text"
+                autoFocus
+                placeholder="Ingrese descripción..."
+              />
+            </FloatingLabel>
+          </Form.Group>
+          <Form.Group className="col-4 text-center">
+            <Button
+              variant="success"
+              size="sm"
+              className="mx-2"
+              ref={btnRef}
+              onClick={handlerAddTodo}
+            >
+              Agregar tarea
+            </Button>
+            <Button size="sm" variant="danger" onClick={deleteCompleted}>
+              Eliminar finalizadas
+            </Button>
+          </Form.Group>
+        </Row>
 
-      <TodoList
-        todos={todos}
-        setTodos={setTodos}
-        todoRef={todoRef}
-        btnRef={btnRef}
-        setEditMode={setEditMode}
-        setId={setId}
-      />
-    </div>
+        <TodoList
+          todos={todos}
+          setTodos={setTodos}
+          todoRef={todoRef}
+          btnRef={btnRef}
+          setEditMode={setEditMode}
+          setId={setId}
+        />
+      </Form>
+    </Container>
   );
 }
 

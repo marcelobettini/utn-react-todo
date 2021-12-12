@@ -1,3 +1,4 @@
+import Button from "react-bootstrap/Button";
 const Todo = ({
   todo,
   todos,
@@ -25,12 +26,26 @@ const Todo = ({
     todoRef.current.value = todo.description;
   };
   return (
-    <tr>
-      <td>{todo.description}</td>
-      <td>{todo.completed ? "si" : "no"}</td>
-      <td>
-        <button onClick={toggleCompleted}>mark</button>
-        <button onClick={() => markForEdit(todo.id)}>edit</button>
+    <tr className="text-center">
+      <td className="col-7 col-md-8">{todo.description}</td>
+      <td className="col-1">{todo.completed ? "finalizada" : "pendiente"}</td>
+      <td className="col-4 col-md-3">
+        <Button
+          variant="warning"
+          size="sm"
+          className="me-1"
+          onClick={toggleCompleted}
+        >
+          marcar{" "}
+        </Button>
+        <Button
+          variant="success"
+          size="sm"
+          className="ms-1"
+          onClick={() => markForEdit(todo.id)}
+        >
+          editar
+        </Button>
       </td>
     </tr>
   );

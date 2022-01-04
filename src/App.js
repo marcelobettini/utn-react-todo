@@ -22,6 +22,7 @@ function App() {
   const todoRef = useRef();
   const btnRef = useRef();
   const handlerAddTodo = (e) => {
+    e.preventDefault();
     const description = todoRef.current.value;
     if (description === "") return;
     if (!editMode) {
@@ -39,7 +40,7 @@ function App() {
       const arrEdit = todos.map((item) =>
         item.id === id ? { ...item, description: todoRef.current.value } : item
       );
-      setTodos((prevState) => (prevState = arrEdit));
+      setTodos(arrEdit);
     }
 
     todoRef.current.value = null;
@@ -49,7 +50,12 @@ function App() {
   };
   return (
     <Container>
-      <Form className="my-5">
+      <Form
+        className="my-5"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <Row className="align-items-center text-capitalize">
           <Form.Group className="col-12 col-lg-8 ">
             <FloatingLabel controlId="floatingInput" label="nueva tarea">
